@@ -20,8 +20,6 @@
   "scripts": {
     "dev": "bun index.ts --license 0deeffd4-2933-4065-a96e-1feb2bc8a320",
     "prod": "bun index.ts",
-    "build-linux": "bun build --compile --target=bun-linux-x64 ./index.ts --outfile build/linux/agent-server-linux",
-    "build-windows": "bun build --compile --target=bun-windows-x64 ./index.ts --outfile build/windows/agent-server-win",
-    "build-prod": "bun build --compile --minify-whitespace --minify-syntax --target bun --minify --sourcemap ./index.ts --outfile build/agent-server-prod"
+    "cli": "bun cli.ts --license 0deeffd4-2933-4065-a96e-1feb2bc8a320"
   }
 }

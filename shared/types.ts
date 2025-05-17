@@ -19,6 +19,7 @@ export interface AgentConfig {
   headless: boolean;
   scrapeData: boolean;
   muteAudio: boolean;
+  id?: string;
 }
 
 export interface JitsiConfig {

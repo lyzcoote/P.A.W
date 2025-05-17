@@ -1,5 +1,7 @@
 import { PORT, app} from "./src/api.ts";
 import { LogManager } from "./shared/logger.ts"
+import { returnChromePath} from "./src/utils.ts";
+import * as os from "os";
 
 const logger = new LogManager("P.A.W - MAIN", false);
 
@@ -12,4 +14,6 @@ async function main() {
 main().catch((error) => {
     logger.fatal("Error starting the server:");
     logger.error(error);
+}).then(() => {
+    console.log(returnChromePath(os.platform()));
 });

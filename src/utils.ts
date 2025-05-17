@@ -1,10 +1,11 @@
 import os from 'os';
 import type { AgentConfig, ValidateLicenseResponse } from "../shared/types.ts";
 import { PuppeteerAgent } from "./agent.ts";
-import { logger } from './api.ts';
 import {existsSync} from "fs";
 
 const AGENTS_DATA_FILE = './agents-data.json';
+
+import { logger } from './api.ts';
 
 /**
  * Salva le configurazioni degli agenti correnti in un file JSON.

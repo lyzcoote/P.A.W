@@ -39,11 +39,11 @@ await new Promise(resolve => setTimeout(resolve, 5000));
 
 if(!values.license) {
     logger.fatal("No license provided. Please provide a license key using the --license option.");
-    process.exit(1);
+    //process.exit(1);
 }
 
 if(!await checkLicense(values.license)) {
-    process.exit(1);
+    //process.exit(1);
 }
 
 logger.info("Setting up API Server...");

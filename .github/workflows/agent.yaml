@@ -1,0 +1,47 @@
+name: Build Agent App
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build Agent App
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install "date-fns" and "puppeteer" package
+        run: bun install date-fns puppeteer
+
+      - name: Build application Windows
+        run: bun run build-windows
+
+      - name: Build application Linux
+        run: bun run build-linux
+
+      - name: Create release
+        uses: akkuman/gitea-release-action@v1
+        env:
+          NODE_OPTIONS: '--experimental-fetch'
+        with:
+          files: |
+            build/linux/agent-server-linux
+            build/windows/agent-server-win.exe
+          prerelease: true
+          md5sum: true
+          name: agent-${{ github.sha }}
+          
